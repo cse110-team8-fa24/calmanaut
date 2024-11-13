@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
 import Home from './pages/Home';
-import MeditationResources from './pages/MeditationResources';
+import MeditationResources from './pages/Reasources/MeditationResources';
 import ProgressTracker from './pages/ProgressTracker';
 import Navbar from './components/Navbar';
 import { AuthorizationProvider } from './context/AuthorizationContext';

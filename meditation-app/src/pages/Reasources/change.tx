@@ -1,0 +1,75 @@
+<div className='section'>
+        <div className='wrapper'>
+          <div className='article article--one'>
+            <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
+              <img src={meditionIMG} alt="Basic image example" />
+            </a>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+          <div className='article article--two'>
+            <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
+              <img src={meditionIMG} alt="Basic image example" />
+            </a>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+          <div className='article article--three'>
+            <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
+              <img src={meditionIMG} alt="Basic image example" />
+            </a>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div className='section'>
+        <div className='wrapper'>
+          <div className='article article--one'>
+            <iframe 
+              className="img" 
+              src="https://www.youtube.com/embed/Aw71zanwMnY" 
+              title="YouTube video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen>
+            </iframe>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+          <div className='article article--two'>
+            <iframe 
+              className="img" 
+              src="https://www.youtube.com/embed/Aw71zanwMnY" 
+              title="YouTube video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen>
+            </iframe>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+          <div className='article article--three'>
+            <iframe 
+              className="img" 
+              src="https://www.youtube.com/embed/Aw71zanwMnY" 
+              title="YouTube video" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen>
+            </iframe>
+            <div className="text">
+              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
+              <p>UC Davis Health 12/14/22</p>
+            </div>
+          </div>
+        </div>
+      </div>
