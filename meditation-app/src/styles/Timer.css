@@ -1,103 +1,152 @@
+/* Center the entire page */
+#home-page {
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack content vertically */
+  text-align: center;
+  background-color: #f0f0f0; /* Optional background color */
+}
+
+/* Container that holds the timer */
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url('/public/urban-vintage-78A265wPiO4-unsplash.jpg');
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Timer circle container */
 .base-timer {
-    position: relative;
-    height: 300px;
-    width: 300px;
-  }
-  
-  .base-timer__circle {
-    fill: none;
-    stroke: none;
-  }
-  
-  .base-timer__path-elapsed {
-    stroke-width: 7px;
-    stroke: grey;
-  }
-  
-  .base-timer__label {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-  }
-  
-  .base-timer__path-remaining {
-    stroke-width: 7px;
-    stroke-linecap: round;
-    transform: rotate(90deg);
-    transform-origin: center;
-    transition: 1s linear all;
-    stroke: currentColor;
-  }
-  
-  .base-timer__path-remaining.green {
-    color: #426B1F;
-  }
-  
-  .base-timer__path-remaining.orange {
-    color: orange;
-  }
-  
-  .base-timer__path-remaining.red {
-    color: red;
-  }
-  
-  .base-timer__svg {
-    transform: scaleX(-1);
-  }
-  
-  .time-input {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .time-input input {
-    font-size: 16px;
-    padding: 5px;
-    width: 60px;
-  }
-  
-  .timer-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .timer-controls button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  h1{
-    color:#426B1F;
-  }
+  position: relative;
+  height: 300px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    button {
-        display: inline-block;
-        border: none;
-        padding: 1rem 2rem;
-        margin: 0;
-        text-decoration: none;
-        background: #426B1F;
-        color: #ffffff;
-        font-family: sans-serif;
-        font-size: 1rem;
-        line-height: 1;
-        cursor: pointer;
-        text-align: center;
-    }
+/* Timer path circle (the base path) */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
 
-    .timer-label {
-        font-size: 18px;
-        font-weight: bold;
-        color: #555;
-        font-family: 'Poppins', sans-serif;
-        letter-spacing: 1px;
-    }
-      
+/* Elapsed time circle (white part) */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: white;
+}
+
+/* Timer label (the countdown text) */
+.base-timer__label {
+  position: absolute;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Remaining time circle (color changing part) */
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  stroke: currentColor;
+}
+
+/* Color changes for remaining time */
+.base-timer__path-remaining.green {
+  color: #426B1F;
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+/* Flip the SVG horizontally */
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+/* Timer input section */
+.time-input {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Style for the input field */
+.time-input input {
+  font-size: 16px;
+  padding: 5px;
+  width: 60px;
+  text-align: center;
+}
+
+/* Timer control buttons section */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Style for the buttons */
+.timer-controls button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+h1 {
+  color: #426B1F;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: #426B1F;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.timer-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+}
