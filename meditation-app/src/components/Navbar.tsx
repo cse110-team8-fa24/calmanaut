@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // We'll add some basic styling in the next step
+import './Navbar.css';
+import { AuthorizationContext } from '../context/AuthorizationContext';
 
 const Navbar: React.FC = () => {
+  const {isLoggedIn, id} = useContext(AuthorizationContext);
+
+  const progressTracker = isLoggedIn
+    ? <li><Link to="/progress">Progress Tracker</Link></li>
+    : <></>;
+
+  const profile = isLoggedIn
+    ? <li><Link to={"/profile/" + id}>Profile</Link></li>
+    : <></>;
+
+  const signup = isLoggedIn
+    ? <li><Link to="/logout">Log Out</Link></li>
+    : <li><Link to="/signup">Sign Up</Link></li>;
+
   return (
     <nav className="navbar">
       <h2>Calmanaut</h2>
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/resources">Resources</Link></li>
-        <li><Link to="/progress">Progress Tracker</Link></li>
+        {progressTracker}
+        {profile}
+        {signup}
       </ul>
     </nav>
   );
