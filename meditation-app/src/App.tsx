@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, HashRouter } from 'react-router-dom';
 import Home from './pages/Home';
-import MeditationResources from './pages/MeditationResources';
+import MeditationResources from './pages/Reasources/MeditationResources';
 import ProgressTracker from './pages/ProgressTracker';
 import Navbar from './components/Navbar';
 import { AuthorizationProvider } from './context/AuthorizationContext';
@@ -10,6 +10,10 @@ import { Logout } from './pages/Logout';
 import { Profile } from './pages/Profile';
 import { Signup } from './pages/Signup';
 import { ProfileId } from './pages/ProfileId';
+import About from './pages/About';
+
+
+
 import * as Constants from './lib/Constants';
 
 const App: React.FC = () => {
@@ -26,6 +30,7 @@ const App: React.FC = () => {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="logout" element={<Logout />} />
+          <Route path="about" element={<About />} />
           <Route path="profile">
             <Route path="" element={<Profile />} />
             <Route path=":id" element={<ProfileId />} />
