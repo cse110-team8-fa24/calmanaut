@@ -22,8 +22,10 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <h2>Calmanaut</h2>
       <ul className="nav-links">
+        <li><Link to="/about">About</Link></li> 
         <li><Link to="/">Home</Link></li>
         <li><Link to="/resources">Resources</Link></li>
+        
         {progressTracker}
         {profile}
         {signup}

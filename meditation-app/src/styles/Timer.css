@@ -10,15 +10,20 @@
 }
 
 /* Container that holds the timer */
+
 .timer-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 30px;
-  border-radius: 10px;
+  width: 100%; 
+  height: 100vh;
   background-image: url('/public/urban-vintage-78A265wPiO4-unsplash.jpg');
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box; 
 }
 
 /* Timer circle container */
