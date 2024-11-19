@@ -7,12 +7,13 @@ interface ArticleProps {
     title: string;
     date: string;
     variant: string;
+    altName: string
 }
 
-const Article: React.FC<ArticleProps> = ({ link, imageSrc, title, date, variant }) => (
+const Article: React.FC<ArticleProps> = ({ link, imageSrc, title, date, variant, altName }) => (
   <div className={`article article--${variant}`}>
     <a href={link} target="_blank" rel="noopener noreferrer">
-      <img src={imageSrc} alt="Basic image example" />
+      <img src={imageSrc} alt={altName} />
     </a>
     <div className="text">
       <h3>{title}</h3>

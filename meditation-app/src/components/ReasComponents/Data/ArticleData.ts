@@ -8,6 +8,7 @@ export interface ArticleData {
     title: string;
     date: string;
     variant: string;
+    altName: string
 }
   
 export const articles: ArticleData[] = [
@@ -17,6 +18,7 @@ export const articles: ArticleData[] = [
       title: "Meditation: What it is, Benefits & Types",
       date: "Cleaveland Clinic 05/22/2022",
       variant: "one",
+      altName: "meditation"
     },
     {
       link: "https://stanfordmag.org/contents/what-happens-when-you-meditate",
@@ -24,6 +26,7 @@ export const articles: ArticleData[] = [
       title: "What Happens When You Meditate",
       date: "Stanford Magazine 03/13/23",
       variant: "two",
+      altName: "braniac"
     },
     {
       link: "https://www.nytimes.com/2020/06/22/at-home/how-to-start-meditating.html",
@@ -31,5 +34,6 @@ export const articles: ArticleData[] = [
       title: "How to Start Meditating",
       date: "The New York Times 06/21/22",
       variant: "three",
+      altName: "NEWYORK"
     },
 ];
