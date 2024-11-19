@@ -1,0 +1,94 @@
+title
+{
+    font-size:40px;
+    background-color: red;
+}
+
+head{
+    background-color:  red;
+}
+
+h1
+{
+
+    background-color: green;
+    text-align: center;
+    margin: auto;
+    width: 36.3%;
+    color: black;
+    
+    
+}
+h2
+{
+    background-color: green;
+    text-align: center;
+    margin: auto;
+    width: 36.3%;
+}
+h3
+{
+    background-color: green;
+    text-align: center;
+    margin: auto;
+    width: 36.3%;
+}
+h4
+{
+    background-color: green;
+    text-align: center;
+    margin: auto;
+    width: 36.3%;
+}
+
+.b
+{
+  background-color: lightblue;
+  border: 10px solid;
+  margin: auto;
+  width: 35%;
+  
+  
+  
+}
+.titles
+{
+    font-size: 34px;
+}
+ 
+
+img
+{
+    width: 150px;
+    height: 150px;
+}
+
+.img1
+{
+    padding: 1px;
+    margin-top:1%;
+    width: 90px;
+    height: 200px;
+
+   
+    
+}
+
+.img2
+{
+    
+    padding:6px;
+   
+    
+    width: 420px;
+    height: 250px;
+}
+
+
+.center
+{
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}

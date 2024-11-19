@@ -25,6 +25,7 @@ const Navbar: React.FC = () => {
         <li><Link to="/about">About</Link></li> 
         <li><Link to="/">Home</Link></li>
         <li><Link to="/resources">Resources</Link></li>
+        <li><Link to = "/music">Music</Link> </li>
         
         {progressTracker}
         {profile}

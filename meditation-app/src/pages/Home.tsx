@@ -20,7 +20,7 @@ const COLOR_CODES = {
 
 // For Timer Functionality
 // please refer to https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
-const Timer: React.FC = () => {
+const  Timer: React.FC = () => {
   const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
   const [timeLeft, setTimeLeft] = useState<number>(timeLimit);
   const [timePassed, setTimePassed] = useState<number>(0);

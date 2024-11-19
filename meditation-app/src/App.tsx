@@ -10,11 +10,13 @@ import { Logout } from './pages/Logout';
 import { Profile } from './pages/Profile';
 import { Signup } from './pages/Signup';
 import { ProfileId } from './pages/ProfileId';
+
 import About from './pages/About';
 
 
 
 import * as Constants from './lib/Constants';
+import Music from './pages/music';
 
 const App: React.FC = () => {
   const MyRouter = Constants.HASH_ROUTER ? HashRouter : Router;
@@ -31,10 +33,12 @@ const App: React.FC = () => {
           <Route path="signup" element={<Signup />} />
           <Route path="logout" element={<Logout />} />
           <Route path="about" element={<About />} />
+          <Route path = "music" element = {<Music/>} />
           <Route path="profile">
             <Route path="" element={<Profile />} />
             <Route path=":id" element={<ProfileId />} />
           </Route>
+          
         </Routes>
       </AuthorizationProvider>
     </MyRouter>
