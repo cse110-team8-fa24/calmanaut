@@ -62,14 +62,5 @@ describe('MeditationResources Component', () => {
         const videoDate = screen.getByText(new RegExp(video.date, 'i'));
         expect(videoDate).toBeInTheDocument();
     });
-
-    /**expect(screen.getByText(/The Scientific Power of Meditation/i)).toBeInTheDocument();
-    expect(screen.getByText(/AsapSCIENCE 01\/18\/15/i)).toBeInTheDocument();
-
-    expect(screen.getByText(/How To Meditate: A Complete Guide For Beginners \(5-min\)/i)).toBeInTheDocument();
-    expect(screen.getByText(/BrettLarkinYoga 12\/27\/17/i)).toBeInTheDocument();
-
-    expect(screen.getByText(/Dr. Sam Harris: Using Meditation to Focus, View Consciousness & Expand Your Mind/i)).toBeInTheDocument();
-    expect(screen.getByText(/Andrew Huberman 01\/02\/23/i)).toBeInTheDocument();*/
   });
 });
