@@ -1,34 +1,73 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { AuthorizationContext } from '../context/AuthorizationContext';
 
 const Navbar: React.FC = () => {
-  const {isLoggedIn, id} = useContext(AuthorizationContext);
+  const { isLoggedIn, id } = useContext(AuthorizationContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const progressTracker = isLoggedIn
-    ? <li><Link to="/progress">Progress Tracker</Link></li>
-    : <></>;
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    
+  };
 
-  const profile = isLoggedIn
-    ? <li><Link to={"/profile/" + id}>Profile</Link></li>
-    : <></>;
-
-  const signup = isLoggedIn
-    ? <li><Link to="/logout">Log Out</Link></li>
-    : <li><Link to="/signup">Sign Up</Link></li>;
+  const closeMenu = () => {
+    setIsMenuOpen(false); // Close the menu when a link is clicked
+  };
 
   return (
     <nav className="navbar">
-      <h2>Calmanaut</h2>
-      <ul className="nav-links">
-        <li><Link to="/about">About</Link></li> 
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/resources">Resources</Link></li>
-        
-        {progressTracker}
-        {profile}
-        {signup}
+      <h2 className="navbar-title">Calmanaut</h2>
+      <button
+        className="navbar-toggle"
+        onClick={toggleMenu}
+        aria-expanded={isMenuOpen}
+        aria-label="Toggle navigation menu"
+      >
+        ☰
+      </button>
+      <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+        <li>
+          <Link to="/about" onClick={closeMenu}>
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/" onClick={closeMenu}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/resources" onClick={closeMenu}>
+            Resources
+          </Link>
+        </li>
+        {isLoggedIn && (
+          <>
+            <li>
+              <Link to="/progress" onClick={closeMenu}>
+                Progress Tracker
+              </Link>
+            </li>
+            <li>
+              <Link to={`/profile/${id}`} onClick={closeMenu}>
+                Profile
+              </Link>
+            </li>
+          </>
+        )}
+        <li>
+          {isLoggedIn ? (
+            <Link to="/logout" onClick={closeMenu}>
+              Log Out
+            </Link>
+          ) : (
+            <Link to="/signup" onClick={closeMenu}>
+              Sign Up
+            </Link>
+          )}
+        </li>
       </ul>
     </nav>
   );

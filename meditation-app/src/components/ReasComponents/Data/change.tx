@@ -1,30 +1,42 @@
-<div className='section'>
+import '../styles/resource.css';
+import React from 'react';
+ 
+import meditionIMG from './images/meditionIMG.jpg';
+import brain from './images/brain.jpg'
+import newYork from './images/newYork.jpg'
+
+
+const MeditationResources: React.FC = () => {
+  return (
+    <div className='section'>
         <div className='wrapper'>
           <div className='article article--one'>
             <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
-              <img src={meditionIMG} alt="Basic image example" />
+              <img src={meditionIMG} alt="meditation" />
             </a>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>Meditation: What it is, Benefits & Types</h3>
+              <p>Cleaveland Clinic 05/22/2022</p>
             </div>
           </div>
+
           <div className='article article--two'>
-            <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
-              <img src={meditionIMG} alt="Basic image example" />
+            <a href="https://stanfordmag.org/contents/what-happens-when-you-meditate" target="_blank" rel="noopener noreferrer">
+              <img src={brain} alt="braniac" />
             </a>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>What Happens When You Meditate</h3>
+              <p>Stanford Magazine 03/13/23</p>
             </div>
           </div>
+
           <div className='article article--three'>
-            <a href="https://my.clevelandclinic.org/health/articles/17906-meditation" target="_blank" rel="noopener noreferrer">
-              <img src={meditionIMG} alt="Basic image example" />
+            <a href="https://www.nytimes.com/2020/06/22/at-home/how-to-start-meditating.html" target="_blank" rel="noopener noreferrer">
+              <img src={newYork} alt="NEWYORK" />
             </a>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>How to Start Meditating</h3>
+              <p>The New York Times 06/21/22</p>
             </div>
           </div>
         </div>
@@ -41,35 +53,39 @@
               allowFullScreen>
             </iframe>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>The Scientific Power of Meditation</h3>
+              <p>AsapSCIENCE 01/18/15</p>
             </div>
           </div>
           <div className='article article--two'>
             <iframe 
               className="img" 
-              src="https://www.youtube.com/embed/Aw71zanwMnY" 
+              src="https://www.youtube.com/embed/MKEUEWEVTiE" 
               title="YouTube video" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen>
             </iframe>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>How To Meditate: A Complete Guide For Beginners (5-min)</h3>
+              <p>BrettLarkinYoga 12/27/17</p>
             </div>
           </div>
           <div className='article article--three'>
             <iframe 
               className="img" 
-              src="https://www.youtube.com/embed/Aw71zanwMnY" 
+              src="https://www.youtube.com/embed/-wIt_WsJGfw" 
               title="YouTube video" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
               allowFullScreen>
             </iframe>
             <div className="text">
-              <h3>10 health benefits of meditation and how to focus on mindfulness</h3>
-              <p>UC Davis Health 12/14/22</p>
+              <h3>Dr. Sam Harris: Using Meditation to Focus, View Consciousness & Expand Your Mind | Huberman Lab 105</h3>
+              <p>Andrew Huberman 01/02/23</p>
             </div>
           </div>
         </div>
       </div>
+  );
+}; 
+
+export default MeditationResources;
