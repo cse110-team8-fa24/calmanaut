@@ -23,8 +23,8 @@ const COLOR_CODES = {
 
 // For Timer Functionality
 // please refer to https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
-const  Timer: React.FC = () => {
-  const {musicKey} = useContext(OptionsContext);
+const Timer: React.FC = () => {
+  const { musicKey } = useContext(OptionsContext);
   const audio = useRef(new Audio());
 
   const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
@@ -37,8 +37,21 @@ const  Timer: React.FC = () => {
   useEffect(() => () => audio.current?.pause(), []);
 
   useEffect(() => {
+    const calculateTimeFraction = (): number => {
+      const rawTimeFraction = timeLeft / timeLimit;
+      return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
+    };
+
+    const setCircleDasharray = () => {
+      const circleDasharray = `${(calculateTimeFraction() * 283).toFixed(0)} 283`;
+      const pathRemaining = document.getElementById("base-timer-path-remaining");
+      if (pathRemaining) {
+        pathRemaining.setAttribute("stroke-dasharray", circleDasharray);
+      }
+    };
+
     let timerInterval: NodeJS.Timeout | null = null;
-    
+
     if (isActive && timeLeft > 0) {
       timerInterval = setInterval(() => {
         setTimePassed(prev => prev + 1);
@@ -49,13 +62,13 @@ const  Timer: React.FC = () => {
     } else if (timeLeft === 0) {
       if (timerInterval) clearInterval(timerInterval); // Only clear if not null
       setIsActive(false);
+      audio.current.pause();
     }
-  
+
     return () => {
       if (timerInterval) clearInterval(timerInterval); // Only clear if not null
     };
-  }, [isActive, timePassed, timeLeft]);
-  
+  }, [isActive, timePassed, timeLeft, timeLimit]);
 
   const handleStart = () => {
     setIsActive(true);
@@ -77,7 +90,7 @@ const  Timer: React.FC = () => {
     setTimeLimit(newTimeLimit);
     setTimeLeft(newTimeLimit); // Update timeLeft to reflect the new time limit
   };
-  
+
   const formatTimeLeft = (time: number): string => {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -85,19 +98,6 @@ const  Timer: React.FC = () => {
       seconds = Number(`0${seconds}`);
     }
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-  };
-
-  const calculateTimeFraction = (): number => {
-    const rawTimeFraction = timeLeft / timeLimit;
-    return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
-  };
-
-  const setCircleDasharray = () => {
-    const circleDasharray = `${(calculateTimeFraction() * 283).toFixed(0)} 283`;
-    const pathRemaining = document.getElementById("base-timer-path-remaining");
-    if (pathRemaining) {
-      pathRemaining.setAttribute("stroke-dasharray", circleDasharray);
-    }
   };
 
   const getRemainingPathColor = (timeLeft: number): string => {
@@ -124,7 +124,7 @@ const  Timer: React.FC = () => {
             min="0"
           />
         </div>
-        <div className="base-timer"> 
+        <div className="base-timer">
           <svg className="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g className="base-timer__circle">
               <circle className="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
@@ -142,7 +142,7 @@ const  Timer: React.FC = () => {
             </g>
           </svg>
           <span id="base-timer-label" className="base-timer__label">
-            {formatTimeLeft(timeLeft)} 
+            {formatTimeLeft(timeLeft)}
           </span>
         </div>
         <div className="timer-controls">
@@ -152,8 +152,8 @@ const  Timer: React.FC = () => {
       </div>
     </div>
   );
-  
-  
+
+
 }
 
 export default Timer;

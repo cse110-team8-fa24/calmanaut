@@ -40,3 +40,11 @@ export const post = (loc: string, body: unknown) => {
     body: JSON.stringify(body),
   });
 }
+
+export const put = (loc: string, body: unknown) => {
+  return request(loc, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+}
