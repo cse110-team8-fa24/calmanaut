@@ -24,7 +24,7 @@ const COLOR_CODES = {
 // please refer to https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 const  Timer: React.FC = () => {
   const {musicKey} = useContext(OptionsContext);
-  const audio = useRef(new Audio(MusicOptions[musicKey].audio));
+  const audio = useRef(new Audio());
 
   const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
   const [timeLeft, setTimeLeft] = useState<number>(timeLimit);
@@ -33,7 +33,7 @@ const  Timer: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false); // To track if the timer is running
 
   // Pause audio after leaving the page
-  useEffect(() => () => audio.current.pause(), []);
+  useEffect(() => () => audio.current?.pause(), []);
 
   useEffect(() => {
     let timerInterval: NodeJS.Timeout | null = null;
