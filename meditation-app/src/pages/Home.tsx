@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Timer.css';
 
+
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
 
@@ -60,11 +61,12 @@ const Timer: React.FC = () => {
   };
 
   const handleTimeLimitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newTimeLimit = parseInt(event.target.value, 10) || 0;
+    let newTimeLimit = parseInt(event.target.value, 10) || 0; // Parse input, default to 0
+    if (newTimeLimit < 0) newTimeLimit = 0; // FIXED IT. USED TO BE ABLE TO CHOOSE NEGATIVE TIME.
     setTimeLimit(newTimeLimit);
     setTimeLeft(newTimeLimit); // Update timeLeft to reflect the new time limit
   };
-
+  
   const formatTimeLeft = (time: number): string => {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -108,6 +110,7 @@ const Timer: React.FC = () => {
             value={timeLimit}
             onChange={handleTimeLimitChange}
             disabled={isActive} // Disable while timer is running
+            min="0"
           />
         </div>
         <div className="base-timer"> 
