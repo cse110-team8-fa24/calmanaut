@@ -1,34 +1,92 @@
+/* Navbar container */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: white; /* Change background to white */
-    color: #333; /* Default text color */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-  }
-  
-  .navbar h2 {
-    margin: 0;
-    font-size: 2rem; /* Increase font size for the website name */
-    font-family: 'Georgia, serif'; /* Set to a distinct font */
-    color: #2e7d32; /* Dark text color */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* Add horizontal padding */
+  background-color: white; /* Keep background white */
+  color: #333; /* Default text color */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative; /* Ensure dropdown menu is positioned correctly */
+  z-index: 10; /* Keep navbar above other content */
+}
+
+/* Navbar title (logo) */
+.navbar h2 {
+  margin: 0;
+  font-size: 2rem; 
+  font-family: 'Georgia, serif'; 
+  color: #2e7d32; 
+  white-space: nowrap; 
+}
+
+/* Navbar links (desktop view) */
+.nav-links {
+  list-style: none;
+  display: flex; 
+  gap: 1.5rem; 
+  margin: 0;
+  align-items: center;
+}
+
+/* Navbar links (toggle dropdown for mobile) */
+.nav-links.show {
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; /* Space between links */
+  position: absolute; 
+  top: 100%; /* Align below navbar */
+  left: 0;
+  width: 100%; 
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  z-index: 9999; /* Ensure it appears on top */
+  max-height: calc(100vh - 4rem); 
+  overflow-y: auto; 
+}
+
+/* Navbar link styling */
+.nav-links a {
+  color: grey; 
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem; 
+  transition: color 0.3s ease; 
+}
+
+.nav-links a:hover {
+  color: #426B1F; 
+  background-color: #f0f0f0; 
+  border-radius: 5px; 
+}
+
+/* Toggle button (only visible on mobile) */
+.navbar-toggle {
+  display: none; /* Hidden on desktop */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #426B1F;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  /* Hide links in a row for mobile */
   .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem; /* Increase spacing between links */
+    display: none; /* Hidden by default on mobile */
   }
-  
-  .nav-links a {
-    color: grey; /* Start with grey color */
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease; /* Smooth transition for color change */
+
+  /* Show toggle button */
+  .navbar-toggle {
+    display: block; /* Visible on mobile */
   }
-  
-  .nav-links a:hover {
-    color: #2e7d32; /* Tree green on hover */
+
+  /* Dropdown menu styling for mobile */
+  .nav-links.show {
+    display: flex; /* Show links when toggled */
   }
-  
+}

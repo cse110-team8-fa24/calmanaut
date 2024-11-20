@@ -27,6 +27,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({ articles }) =>
             title={article.title}
             date={article.date}
             variant={article.variant}
+            altName={article.altName}
           />
         ))}
       </div>
@@ -45,6 +46,7 @@ export const VideosSection: React.FC<VideosSectionProps> = ({ videos }) => {
                 title={video.title}
                 date={video.date}
                 variant={video.variant}
+                vidtitle={video.vidtitle}
             />
           ))}
         </div>

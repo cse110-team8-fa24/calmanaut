@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import Timer from '../pages/Home'; // Adjust path as necessary
+import Timer from '../pages/Home'; 
 
 jest.useFakeTimers();
 jest.spyOn(window.HTMLMediaElement.prototype, "play")
@@ -26,7 +26,7 @@ describe('Timer Component', () => {
       jest.advanceTimersByTime(5000);
     });
 
-    // Confirm the timer has decreased from the initial value (e.g., check it's not "0:20")
+    // Confirm the timer has decreased from the initial value (check it's not 0:20)
     const timerLabel = screen.getByText(/0:\d{2}/);
     expect(timerLabel).not.toHaveTextContent('0:20');
 
@@ -35,4 +35,30 @@ describe('Timer Component', () => {
     expect(screen.getByText('0:20')).toBeInTheDocument();
     expect(startButton).not.toBeDisabled(); // Ensure Start is enabled again after reset
   });
+
+  it('disables the Start button when the timer starts', () => {
+    render(<Timer />);
+    const startButton = screen.getByRole('button', { name: /start/i });
+  
+    fireEvent.click(startButton);
+    expect(startButton).toBeDisabled();
+  });
+  
+  it('disables Start button when timer is set to zero', () => {
+    render(<Timer />);
+    const startButton = screen.getByRole('button', { name: /start/i });
+    const timeInput = screen.getByRole('spinbutton') as HTMLInputElement;
+  
+    fireEvent.change(timeInput, { target: { value: '0' } });
+    expect(startButton).toBeDisabled();
+  });
+
+  it('updates the displayed time when the timer limit is changed', () => {
+    render(<Timer />);
+    const timeInput = screen.getByRole('spinbutton') as HTMLInputElement;
+  
+    fireEvent.change(timeInput, { target: { value: '30' } });
+    expect(screen.getByText('0:30')).toBeInTheDocument(); 
+  });
+  
 });

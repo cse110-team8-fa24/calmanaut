@@ -6,14 +6,15 @@ interface VideoProps{
     title: string;
     date: string;
     variant: string;
+    vidtitle: string;
   }
 
-const Video: React.FC<VideoProps> = ({ videoSrc, title, date, variant }) => (
+const Video: React.FC<VideoProps> = ({ videoSrc, title, date, variant, vidtitle }) => (
     <div className={`article article--${variant}`}>
       <iframe
         className="img"
         src={videoSrc}
-        title="YouTube video"
+        title={vidtitle}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
