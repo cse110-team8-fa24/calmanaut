@@ -38,7 +38,7 @@ const Music = () => {
   const divs = [];
   for (const key in MusicOptions) {
     const { title, audio, image } = MusicOptions[key];
-    divs.push(<div className="box">
+    divs.push(<div className="box" key={key}>
       <h2>{title}</h2>
       <img alt="" src={image} />
       <div className="buttonrow">
@@ -49,6 +49,7 @@ const Music = () => {
   }
 
   return <div className="music">
+    <h1>Music</h1>
     <div className="musicgrid">
       {divs}
     </div>
