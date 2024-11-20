@@ -1,8 +1,11 @@
-import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import Timer from '../pages/Home'; 
 
 jest.useFakeTimers();
+jest.spyOn(window.HTMLMediaElement.prototype, "play")
+    .mockImplementation(async () => {});
+jest.spyOn(window.HTMLMediaElement.prototype, "pause")
+    .mockImplementation(async () => {});
 
 describe('Timer Component', () => {
   afterEach(() => {
