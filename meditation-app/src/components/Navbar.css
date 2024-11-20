@@ -47,7 +47,7 @@
 }
 
 /* Navbar link styling */
-.nav-links a {
+.navbar a {
   color: grey; 
   text-decoration: none;
   font-weight: bold;
