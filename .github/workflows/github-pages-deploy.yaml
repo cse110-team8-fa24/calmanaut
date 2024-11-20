@@ -1,0 +1,51 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ['github-pages-deploy']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: './meditation-app/package-lock.json'
+      - name: Install dependencies
+        working-directory: ./meditation-app
+        run: npm install
+      - name: Create .env
+        working-directory: ./meditation-app
+        run: printf 'REACT_APP_SERVER=https://calmanaut-server.aldw.net\nREACT_APP_HASH_ROUTER=true' >> .env
+      - name: Build
+        working-directory: ./meditation-app
+        run: npm run build
+        env:
+          CI: ""
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './meditation-app/build'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
