@@ -12,7 +12,7 @@ export const Profile = (props: any) => {
 
     if (isLoggedIn)
       navigate("/profile/" + id);
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, navigate, id]);
 
   return <></>;
 };
