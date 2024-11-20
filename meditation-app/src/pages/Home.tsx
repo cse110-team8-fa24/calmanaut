@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/Timer.css';
+import { OptionsContext } from '../context/OptionsContext';
+import { MusicOptions } from './Music';
 
 
 const WARNING_THRESHOLD = 10;
@@ -21,12 +23,18 @@ const COLOR_CODES = {
 
 // For Timer Functionality
 // please refer to https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
-const Timer: React.FC = () => {
+const  Timer: React.FC = () => {
+  const {musicKey} = useContext(OptionsContext);
+  const audio = useRef(new Audio());
+
   const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
   const [timeLeft, setTimeLeft] = useState<number>(timeLimit);
   const [timePassed, setTimePassed] = useState<number>(0);
   const [remainingPathColor, setRemainingPathColor] = useState<string>(COLOR_CODES.info.color);
   const [isActive, setIsActive] = useState<boolean>(false); // To track if the timer is running
+
+  // Pause audio after leaving the page
+  useEffect(() => () => audio.current?.pause(), []);
 
   useEffect(() => {
     let timerInterval: NodeJS.Timeout | null = null;
@@ -51,6 +59,8 @@ const Timer: React.FC = () => {
 
   const handleStart = () => {
     setIsActive(true);
+    audio.current = new Audio(MusicOptions[musicKey].audio);
+    audio.current.play();
   };
 
   const handleReset = () => {
@@ -58,6 +68,7 @@ const Timer: React.FC = () => {
     setTimePassed(0);
     setTimeLeft(timeLimit);
     setRemainingPathColor(COLOR_CODES.info.color);
+    audio.current.pause();
   };
 
   const handleTimeLimitChange = (event: React.ChangeEvent<HTMLInputElement>) => {

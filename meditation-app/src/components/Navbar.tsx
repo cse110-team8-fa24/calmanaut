@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      <h2 className="navbar-title">Calmanaut</h2>
+      <Link to="/"><h2 className="navbar-title">Calmanaut</h2></Link>
       <button
         className="navbar-toggle"
         onClick={toggleMenu}
@@ -29,18 +29,23 @@ const Navbar: React.FC = () => {
       </button>
       <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
         <li>
-          <Link to="/about" onClick={closeMenu}>
-            About
-          </Link>
-        </li>
-        <li>
           <Link to="/" onClick={closeMenu}>
             Home
           </Link>
         </li>
         <li>
+          <Link to="/about" onClick={closeMenu}>
+            About
+          </Link>
+        </li>
+        <li>
           <Link to="/resources" onClick={closeMenu}>
             Resources
+          </Link>
+        </li>
+        <li>
+          <Link to="/music" onClick={closeMenu}>
+            Music
           </Link>
         </li>
         {isLoggedIn && (

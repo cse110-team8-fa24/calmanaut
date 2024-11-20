@@ -12,7 +12,7 @@ type ContextType = {
   setId: React.Dispatch<React.SetStateAction<number>>,
 };
 
-export const initialState: ContextType = {
+const initialState: ContextType = {
   isLoggedIn: undefined,
   setIsLoggedIn: () => { },
 
