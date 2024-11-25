@@ -31,5 +31,6 @@ export const ProfileId = (props: any) => {
     <h1>Profile</h1>
     <h2>{user.username}</h2>
     <p>Created on {user.createDate.toLocaleString()}</p>
+    <h2>ID: {user.id}</h2>
   </>;
 };
