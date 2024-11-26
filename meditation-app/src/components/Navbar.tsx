@@ -43,11 +43,6 @@ const Navbar: React.FC = () => {
             Resources
           </Link>
         </li>
-        <li>
-          <Link to="/music" onClick={closeMenu}>
-            Music
-          </Link>
-        </li>
         {isLoggedIn && (
           <>
             <li>

@@ -1,27 +1,26 @@
-.music {
+.options {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.music h1 {
+.options h1 {
   color: #2a2a2a;
-  margin-top: 40px;
-  margin-bottom: 0;
+  margin: 40px 15px 0;
+  text-align: center;
 }
 
-.music .musicgrid {
+.options .optionsgrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  gap: 50px;
   margin: 0 auto;
   padding: 50px;
 }
 
-.music .box {
+.options .box {
   display: flex;
   flex-direction: column;
-  max-width: 30vw;
   gap: 10px;
 
   background-color: #426B1F;
@@ -31,46 +30,48 @@
   box-shadow: 0 0 8px #AAAAAA;
 }
 
-.music .box h2 {
+.options .box h2 {
   text-align: center;
   margin: 0;
   color: white;
 }
 
-.music img {
+.options img {
+  object-fit: cover;
+  aspect-ratio: calc(1440/1080);
   border-radius: 5px;
 }
 
-.music .buttonrow {
+.options .buttonrow {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
 
-.music .buttonrow button {
+.options button {
   background-color: #2a2a2a;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.music .buttonrow button:hover {
+.options button:hover {
   background-color: black;
 }
 
-.music .buttonrow .playpause {
+.options .playpause {
   flex: 0 0 0;
 }
 
-.music .buttonrow .select {
+.options .select {
   flex: 1 1 0;
 }
 
 @media only screen and (max-width: 600px) {
-  .music .musicgrid {
+  .options .optionsgrid {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  .music .box {
+  .options .box {
     max-width: 60vw;
   }
 }

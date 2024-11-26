@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { OptionsProvider } from '../context/OptionsContext';
-import Music from '../pages/Music';
+import Options from '../components/Options';
 
 const playMock = jest.spyOn(window.HTMLMediaElement.prototype, "play")
   .mockImplementation(async () => { });
@@ -9,7 +9,7 @@ const pauseMock = jest.spyOn(window.HTMLMediaElement.prototype, "pause")
 
 describe("Music page", () => {
   it("plays/pauses music when PlayPause is clicked", async () => {
-    render(<Music />);
+    render(<Options />);
 
     const playPauseButton = screen.getAllByText("\u23F5")[0];
     expect(playPauseButton).toBeDefined();
@@ -27,7 +27,7 @@ describe("Music page", () => {
   });
 
   it("selecting pages does deselect others", async () => {
-    render(<OptionsProvider><Music /></OptionsProvider>);
+    render(<OptionsProvider><Options /></OptionsProvider>);
 
     const selectButtons = screen.getAllByText(/select music/i);
     expect(selectButtons.length).toBeGreaterThanOrEqual(4);
