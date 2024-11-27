@@ -1,0 +1,20 @@
+.headerinfo
+{
+    width: 300px;
+    border: 15px solid black;
+}
+
+.colorbuttons
+{
+   
+    text-align: center;
+    margin-top:150px;
+    border: 3px solid black;
+}
+
+.colorbuttons .listbuttons
+{
+    margin-top:15px;
+}
+
+

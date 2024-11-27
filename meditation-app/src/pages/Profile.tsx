@@ -14,5 +14,7 @@ export const Profile = (props: any) => {
       navigate("/profile/" + id);
   }, [isLoggedIn, navigate]);
 
+  
+
   return <></>;
 };
