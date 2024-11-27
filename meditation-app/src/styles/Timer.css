@@ -1,15 +1,108 @@
 /* Center the entire page */
 #home-page {
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
+  /* Full height of the viewport */
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Stack content vertically */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  flex-direction: column;
+  /* Stack content vertically */
   text-align: center;
-  background-color: #f0f0f0; /* Optional background color */
+  background-color: #f0f0f0;
+  /* Optional background color */
 }
 
 /* Container that holds the timer */
+
+#app {
+  position: relative;
+}
+
+#app div.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
+}
+
+#app div.background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#app div.options-popup-container {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #00000088;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app div.options-popup {
+  width: 80%;
+  height: 80%;
+  max-width: 800px;
+  min-width: 400px;
+  max-height: 500px;
+  min-height: 250px;
+  background-color: white;
+
+  border-radius: 10px;
+  position: relative;
+}
+
+#app div.options-popup div.close-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 10px 0;
+}
+
+#app div.options-popup .close {
+  width: 30px;
+  padding: 0;
+  aspect-ratio: 1;
+
+  border-radius: 8px;
+  font-size: 25px;
+}
+
+#app div.options-popup .options-container {
+  overflow: scroll;
+  width: 100%;
+  height: 100%;
+}
+
+#app div.options-buttons {
+  display: flex;
+  position: absolute;
+  right: 0;
+  flex-direction: row;
+  justify-content: right;
+  padding: 30px 30px 0;
+  gap: 30px;
+}
+
+#app div.options-buttons button {
+  padding: 10px;
+  aspect-ratio: 1;
+}
+
+#app div.options-buttons img {
+  max-width: 35px;
+  margin: 0;
+}
 
 .timer-container {
   display: flex;
@@ -17,15 +110,11 @@
   justify-content: center;
   align-items: center;
   padding: 30px;
-  width: 100%; 
-  max-width:100%;
+  width: 100%;
+  max-width: 100%;
   height: 100vh;
-  background-image: url('/public/urban-vintage-78A265wPiO4-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-sizing: border-box; 
-  overflow:visible;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 /* Timer circle container */
@@ -53,14 +142,18 @@
 /* Timer label (the countdown text) */
 .base-timer__label {
   position: absolute;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48px;
   color: white;
   font-weight: bold;
+
+  text-shadow: 0 0 15px black;
 }
 
 /* Remaining time circle (color changing part) */
@@ -95,14 +188,31 @@
 .time-input {
   margin-bottom: 20px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 /* Style for the input field */
 .time-input input {
-  font-size: 16px;
+  font: inherit;
+  font-size: 18px;
   padding: 5px;
-  width: 60px;
+  width: 80px;
+  height: 25px;
   text-align: center;
+
+  border: 0;
+  background-color: transparent;
+  color: white;
+  text-shadow: 0 0 8px black, 0 0 8px black;
+}
+
+.time-input input:hover,
+.time-input input:focus {
+  outline: 2px solid #426B1F;
+  border-radius: 4px;
+  background-color: #426B1F88;
 }
 
 /* Timer control buttons section */
@@ -145,6 +255,10 @@ button {
   border-radius: 5px;
 }
 
+button:hover {
+  background: #2d4a14;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -152,8 +266,7 @@ button:disabled {
 
 .timer-label {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
   color: white;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 1px;
+  text-shadow: 0 0 8px black, 0 0 8px black;
 }

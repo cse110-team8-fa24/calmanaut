@@ -12,7 +12,6 @@ import { Profile } from './pages/Profile';
 import { Signup } from './pages/Signup';
 import { ProfileId } from './pages/ProfileId';
 import About from './pages/About';
-import Music from './pages/Music';
 import * as Constants from './lib/Constants';
 import CalendarPage from './pages/CalendarPage';
 
@@ -32,7 +31,6 @@ const App: React.FC = () => {
             <Route path="signup" element={<Signup />} />
             <Route path="logout" element={<Logout />} />
             <Route path="about" element={<About />} />
-            <Route path="music" element={<Music />} />
             <Route path="calendar" element={<CalendarPage />} />
             <Route path="profile">
               <Route path="" element={<Profile />} />

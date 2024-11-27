@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/Timer.css';
 import { OptionsContext } from '../context/OptionsContext';
-import { MusicOptions } from './Music';
+import Options, { GetOptions } from '../components/Options';
 
 
 const WARNING_THRESHOLD = 10;
@@ -24,7 +24,7 @@ const COLOR_CODES = {
 // For Timer Functionality
 // please refer to https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
 const Timer: React.FC = () => {
-  const { musicKey } = useContext(OptionsContext);
+  const { imageKey, musicKey } = useContext(OptionsContext);
   const audio = useRef(new Audio());
 
   const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
@@ -32,6 +32,10 @@ const Timer: React.FC = () => {
   const [timePassed, setTimePassed] = useState<number>(0);
   const [remainingPathColor, setRemainingPathColor] = useState<string>(COLOR_CODES.info.color);
   const [isActive, setIsActive] = useState<boolean>(false); // To track if the timer is running
+
+  const [showOptions, setShowOptions] = useState(false);
+
+  const p = process.env.PUBLIC_URL;
 
   // Pause audio after leaving the page
   useEffect(() => () => audio.current?.pause(), []);
@@ -72,7 +76,7 @@ const Timer: React.FC = () => {
 
   const handleStart = () => {
     setIsActive(true);
-    audio.current = new Audio(MusicOptions[musicKey].audio);
+    audio.current = new Audio(GetOptions(musicKey).audio);
     audio.current.play();
   };
 
@@ -109,10 +113,26 @@ const Timer: React.FC = () => {
     return COLOR_CODES.info.color;
   };
 
+  const optionsPopup = showOptions ? <div className="options-popup-container">
+    <div className="options-popup">
+      <div className="close-container">
+        <button className="close" onClick={() => setShowOptions(false)}>&times;</button>
+      </div>
+      <div className="options-container">
+        <Options/>
+      </div>
+    </div>
+  </div> : <></>;
+
   return (
     <div id="app">
-      <h1>Welcome to Calmanaut</h1>
-      <p>Your meditation journey begins here!</p>
+      {optionsPopup}
+      <div className="options-buttons">
+        <button onClick={() => setShowOptions(!showOptions)}><img src={p + "/options-icon.png"} alt="" /></button>
+      </div>
+      <div className="background">
+        <img alt="" src={GetOptions(imageKey).image}/>
+      </div>
       <div className="timer-container"> {/* Main centering container */}
         <div className="time-input">
           <label className="timer-label">Set Timer (seconds): </label>
