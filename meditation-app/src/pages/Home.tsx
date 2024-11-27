@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/Timer.css';
 import { OptionsContext } from '../context/OptionsContext';
-import Options, { OptionsMap } from '../components/Options';
+import Options, { GetOptions } from '../components/Options';
 
 
 const WARNING_THRESHOLD = 10;
@@ -76,7 +76,7 @@ const Timer: React.FC = () => {
 
   const handleStart = () => {
     setIsActive(true);
-    audio.current = new Audio(OptionsMap[musicKey].audio);
+    audio.current = new Audio(GetOptions(musicKey).audio);
     audio.current.play();
   };
 
@@ -131,7 +131,7 @@ const Timer: React.FC = () => {
         <button onClick={() => setShowOptions(!showOptions)}><img src={p + "/options-icon.png"} alt="" /></button>
       </div>
       <div className="background">
-        <img alt="" src={OptionsMap[imageKey].image}/>
+        <img alt="" src={GetOptions(imageKey).image}/>
       </div>
       <div className="timer-container"> {/* Main centering container */}
         <div className="time-input">

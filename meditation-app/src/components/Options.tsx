@@ -10,27 +10,34 @@ type OptionsType = {
 
 const p = process.env.PUBLIC_URL;
 
-export const OptionsMap: OptionsType = {
+const OptionsMap: OptionsType = {
   "forest": {
-    title: "Forest",
-    audio: p + "/options/forest-163012.mp3",
-    image: p + "/options/kalen-emsley-_LuLiJc1cdo-unsplash.jpg",
+      title: "Forest",
+      audio: p + "/options/forest-163012.mp3",
+      image: p + "/options/kalen-emsley-_LuLiJc1cdo-unsplash.jpg",
   },
   "ocean": {
-    title: "Ocean",
-    audio: p + "/options/ocean-245607.mp3",
-    image: p + "/options/pexels-kellie-churchman-371878-1001682.jpg",
+      title: "Ocean",
+      audio: p + "/options/ocean-245607.mp3",
+      image: p + "/options/pexels-kellie-churchman-371878-1001682.jpg",
   },
   "sky": {
-    title: "Sky",
-    audio: p + "/options/majestic-sky-healing-meditative-cello-and-piano-230090 - Copy.mp3",
-    image: p + "/options/pexels-pixabay-158827.jpg",
+      title: "Sky",
+      audio: p + "/options/majestic-sky-healing-meditative-cello-and-piano-230090 - Copy.mp3",
+      image: p + "/options/pexels-pixabay-158827.jpg",
   },
   "space": {
-    title: "Space",
-    audio: p + "/options/perfect-beauty-191271.mp3",
-    image: p + "/options/pexels-pixabay-2150.jpg",
+      title: "Space",
+      audio: p + "/options/perfect-beauty-191271.mp3",
+      image: p + "/options/pexels-pixabay-2150.jpg",
   },
+};  
+
+export const GetOptions = (key: string) => {
+  if (key in OptionsMap)
+    return OptionsMap[key];
+  else
+    return OptionsMap["forest"];
 }
 
 const Options = () => {
