@@ -51,6 +51,11 @@ const Navbar: React.FC = () => {
         {isLoggedIn && (
           <>
             <li>
+              <Link to="/calendar" onClick={closeMenu}>
+                Calendar
+              </Link>
+            </li>
+            <li>
               <Link to="/progress" onClick={closeMenu}>
                 Progress Tracker
               </Link>
