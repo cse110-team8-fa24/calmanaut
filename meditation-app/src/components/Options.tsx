@@ -41,7 +41,7 @@ export const GetOptions = (key: string) => {
 }
 
 const Options = () => {
-  const {musicKey, setMusicKey, imageKey, setImageKey} = useContext(OptionsContext);
+  const {musicKey, setMusicKey, imageKey, setImageKey, volume, setVolume} = useContext(OptionsContext);
 
   const divs = [];
   for (const key in OptionsMap) {
@@ -83,6 +83,11 @@ const Options = () => {
 
   return <div className="options">
     <h1>Background & Music</h1>
+    <div className="volume">
+        <h3>Volume</h3>
+        <input type="range" min="0" max="1" step="0.01" value={volume} onChange={e => setVolume(Number.parseFloat(e.target.value))} />
+        <div>{Math.round(volume * 100)}%</div>
+    </div>
     <div className="optionsgrid">
       {divs}
     </div>

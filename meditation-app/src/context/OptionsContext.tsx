@@ -5,10 +5,13 @@ import * as Util from "../lib/Util";
 
 type ContextType = {
   imageKey: string;
-  setImageKey: (key: string) => Promise<void>,
+  setImageKey: (key: string) => Promise<void>;
 
   musicKey: string;
-  setMusicKey: (key: string) => Promise<void>,
+  setMusicKey: (key: string) => Promise<void>;
+
+  volume: number;
+  setVolume: (v: number) => void;
 };
 
 const initialState: ContextType = {
@@ -17,6 +20,9 @@ const initialState: ContextType = {
 
   musicKey: "forest",
   setMusicKey: async () => { },
+
+  volume: 1,
+  setVolume: () => { },
 };
 
 export const OptionsContext = createContext<ContextType>(initialState);
@@ -26,6 +32,7 @@ export const OptionsProvider = (props: any) => {
 
   const [imageKey, setImageKey] = useState(initialState.imageKey);
   const [musicKey, setMusicKey] = useState(initialState.musicKey);
+  const [volume, setVolume] = useState(initialState.volume);
 
   const setImageKeyImpl = async (key: string) => {
     setImageKey(key);
@@ -49,6 +56,11 @@ export const OptionsProvider = (props: any) => {
       console.error(res.status + ": " + await res.text());
   }
 
+  const setVolumeImpl = (v: number) => {
+    setVolume(v);
+    localStorage.setItem("volume", v.toString());
+  }
+
   useEffect(() => {
     if (isLoggedIn !== true)
       return;
@@ -61,6 +73,10 @@ export const OptionsProvider = (props: any) => {
     }).catch(console.error);
   }, [isLoggedIn, setImageKey, setMusicKey]);
 
+  useEffect(() => {
+    setVolume(Number.parseFloat(localStorage.getItem("volume") || "1"));
+  }, [setVolume]);
+
   return <>
     <OptionsContext.Provider
       value={{
@@ -68,6 +84,8 @@ export const OptionsProvider = (props: any) => {
         setImageKey: setImageKeyImpl,
         musicKey: musicKey,
         setMusicKey: setMusicKeyImpl,
+        volume: volume,
+        setVolume: setVolumeImpl,
       }}
     >
       {props.children}

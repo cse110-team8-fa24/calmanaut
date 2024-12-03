@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { OptionsContext } from "../context/OptionsContext";
 
 export const PlayPause = (props: any) => {
+  const {volume} = useContext(OptionsContext);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const audio = useRef(new Audio(props.audio));
+  audio.current.volume = volume;
 
   // Pause audio after leaving the page
   useEffect(() => () => audio.current.pause(), []);
