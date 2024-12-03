@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "../styles/CalendarPage.css";
-import * as Util from "../lib/Util"; // Adjust the path based on your project structure
+import * as Util from "../lib/Util";
 
 const CalendarPage: React.FC = () => {
   const [selectedDates, setSelectedDates] = useState<string[]>([]);

@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthorizationContext } from "../context/AuthorizationContext";
 import { format } from "date-fns";
-import * as Util from "../lib/Util"; // Adjust the path as needed
-
+import * as Util from "../lib/Util";
 
 const ProgressTracker: React.FC = () => {
   const { isLoggedIn } = useContext(AuthorizationContext);
@@ -73,7 +72,7 @@ const ProgressTracker: React.FC = () => {
 
     fetchMeditationDates();
   }, [isLoggedIn, navigate]);
-
+  
   return (
     <div>
       <h1>Your Meditation Progress</h1>
