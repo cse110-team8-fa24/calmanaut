@@ -28,11 +28,11 @@ describe('Timer Component', () => {
 
     // Confirm the timer has decreased from the initial value (check it's not 0:20)
     const timerLabel = screen.getByText(/0:\d{2}/);
-    expect(timerLabel).not.toHaveTextContent('0:20');
+    expect(timerLabel).not.toHaveTextContent('1:00');
 
     // Click reset button and check that timer resets to initial value (0:20)
     fireEvent.click(resetButton);
-    expect(screen.getByText('0:20')).toBeInTheDocument();
+    expect(screen.getByText('1:00')).toBeInTheDocument();
     expect(startButton).not.toBeDisabled(); // Ensure Start is enabled again after reset
   });
 

@@ -27,7 +27,7 @@ const Timer: React.FC = () => {
   const { imageKey, musicKey } = useContext(OptionsContext);
   const audio = useRef(new Audio());
 
-  const [timeLimit, setTimeLimit] = useState<number>(20); // Default time is 20 seconds
+  const [timeLimit, setTimeLimit] = useState<number>(60); // Default time is 60 seconds
   const [timeLeft, setTimeLeft] = useState<number>(timeLimit);
   const [timePassed, setTimePassed] = useState<number>(0);
   const [remainingPathColor, setRemainingPathColor] = useState<string>(COLOR_CODES.info.color);
@@ -90,7 +90,7 @@ const Timer: React.FC = () => {
 
   const handleTimeLimitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newTimeLimit = parseInt(event.target.value, 10) || 0; // Parse input, default to 0
-    if (newTimeLimit < 0) newTimeLimit = 0; // FIXED IT. USED TO BE ABLE TO CHOOSE NEGATIVE TIME.
+    if (0 < newTimeLimit && newTimeLimit < 15) newTimeLimit = 15;
     setTimeLimit(newTimeLimit);
     setTimeLeft(newTimeLimit); // Update timeLeft to reflect the new time limit
   };
@@ -138,10 +138,10 @@ const Timer: React.FC = () => {
           <label className="timer-label">Set Timer (seconds): </label>
           <input
             type="number"
-            value={timeLimit}
             onChange={handleTimeLimitChange}
             disabled={isActive} // Disable while timer is running
-            min="0"
+            defaultValue="60"
+            min="15"
           />
         </div>
         <div className="base-timer">
