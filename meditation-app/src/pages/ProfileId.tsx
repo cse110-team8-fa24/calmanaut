@@ -79,6 +79,11 @@ export const ProfileId = (props: any) => {
 
     longestStreak = Math.max(longestStreak, currentStreak);
 
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (sortedDates[sortedDates.length - 1] < today)
+      currentStreak = 0;
+
     setCurrentStreak(currentStreak);
     setLongestStreak(longestStreak);
   }, [meditationDates]);
