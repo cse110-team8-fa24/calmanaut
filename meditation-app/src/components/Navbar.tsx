@@ -44,23 +44,11 @@ const Navbar: React.FC = () => {
           </Link>
         </li>
         {isLoggedIn && (
-          <>
-            <li>
-              <Link to="/calendar" onClick={closeMenu}>
-                Calendar
-              </Link>
-            </li>
-            <li>
-              <Link to="/progress" onClick={closeMenu}>
-                Progress Tracker
-              </Link>
-            </li>
-            <li>
-              <Link to={`/profile/${id}`} onClick={closeMenu}>
-                Profile
-              </Link>
-            </li>
-          </>
+          <li>
+            <Link to={`/profile/${id}`} onClick={closeMenu}>
+              Profile
+            </Link>
+          </li>
         )}
         <li>
           {isLoggedIn ? (

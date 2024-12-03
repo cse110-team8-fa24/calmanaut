@@ -48,3 +48,11 @@ export const put = (loc: string, body: unknown) => {
     body: JSON.stringify(body),
   });
 }
+
+export const del = (loc: string, body: unknown) => {
+  return request(loc, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+}

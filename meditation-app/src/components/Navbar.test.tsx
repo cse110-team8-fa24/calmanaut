@@ -42,7 +42,6 @@ describe('Navbar Component Tests', () => {
     expect(screen.getByRole('link', { name: /Sign Up/i })).toBeInTheDocument();
 
     // Ensure logged-in links are not rendered
-    expect(screen.queryByRole('link', { name: /Progress Tracker/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /Profile/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /Log Out/i })).not.toBeInTheDocument();
   });
@@ -51,7 +50,6 @@ describe('Navbar Component Tests', () => {
     renderNavbar(true, 'testuser', 123); // Logged in with username and id
 
     // Logged-in links
-    expect(screen.getByRole('link', { name: /Progress Tracker/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Profile/i })).toHaveAttribute('href', '/profile/123');
     expect(screen.getByRole('link', { name: /Log Out/i })).toBeInTheDocument();
 
