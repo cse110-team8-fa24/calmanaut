@@ -14,11 +14,11 @@ const Article: React.FC<ArticleProps> = ({ link, imageSrc, title, date, variant,
   <div className={`article article--${variant}`}>
     <a href={link} target="_blank" rel="noopener noreferrer">
       <img src={imageSrc} alt={altName} />
+      <div className="text">
+        <h3>{title}</h3>
+        <p>{date}</p>
+      </div>
     </a>
-    <div className="text">
-      <h3>{title}</h3>
-      <p>{date}</p>
-    </div>
   </div>
 );
 
