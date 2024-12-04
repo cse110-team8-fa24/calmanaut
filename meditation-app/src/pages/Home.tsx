@@ -64,7 +64,7 @@ const Timer: React.FC = () => {
         setCircleDasharray();
         setRemainingPathColor(getRemainingPathColor(timeLeft));
       }, 1000);
-    } else if (timeLeft === 0) {
+    } else if (isActive && timeLeft === 0) {
       if (timerInterval) clearInterval(timerInterval); // Only clear if not null
       setIsActive(false);
       setShowMessage(true); // Show the message when timer ends
