@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthorizationContext } from '../context/AuthorizationContext';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
 
 describe('Navbar Component Tests', () => {
   const renderNavbar = (
