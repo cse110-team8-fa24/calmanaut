@@ -33,7 +33,7 @@ const Timer: React.FC = () => {
   const [timePassed, setTimePassed] = useState<number>(0);
   const [remainingPathColor, setRemainingPathColor] = useState<string>(COLOR_CODES.info.color);
   const [isActive, setIsActive] = useState<boolean>(false); // To track if the timer is running
-
+  const [showMessage, setShowMessage] = useState<boolean>(false);
   const [showOptions, setShowOptions] = useState(false);
 
   const p = process.env.PUBLIC_URL;
@@ -67,6 +67,8 @@ const Timer: React.FC = () => {
     } else if (timeLeft === 0) {
       if (timerInterval) clearInterval(timerInterval); // Only clear if not null
       setIsActive(false);
+      setShowMessage(true); // Show the message when timer ends
+      console.log("showMessage set to true");
       audio.current.pause();
     }
 
@@ -92,6 +94,7 @@ const Timer: React.FC = () => {
   const handleTimeLimitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newTimeLimit = parseInt(event.target.value, 10) || 0; // Parse input, default to 0
     if (0 < newTimeLimit && newTimeLimit < 15) newTimeLimit = 15;
+    if (newTimeLimit > 3600) newTimeLimit = 3600; // Maximum 600
     setTimeLimit(newTimeLimit);
     setTimeLeft(newTimeLimit); // Update timeLeft to reflect the new time limit
   };
@@ -125,6 +128,18 @@ const Timer: React.FC = () => {
     </div>
   </div> : <></>;
 
+if (showMessage) {
+  return (
+    <div className="relax-message-container">
+      <h1>Feeling like a "calmanaut"?</h1>
+      <p>Take a deep breath, and enjoy this moment of calm.</p>
+      <button className="return-timer-button" onClick={() => setShowMessage(false)}>
+        Back to Timer
+      </button>
+    </div>
+  );
+}
+
   return (
     <div id="app">
       {optionsPopup}
@@ -139,10 +154,12 @@ const Timer: React.FC = () => {
           <label className="timer-label">Set Timer (seconds): </label>
           <input
             type="number"
+            value={timeLimit}
             onChange={handleTimeLimitChange}
             disabled={isActive} // Disable while timer is running
             defaultValue="60"
             min="15"
+            max="3600"
           />
         </div>
         <div className="base-timer">
@@ -173,8 +190,6 @@ const Timer: React.FC = () => {
       </div>
     </div>
   );
-
-
 }
 
 export default Timer;
